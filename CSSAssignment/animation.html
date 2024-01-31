@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>CSSAssignment</title>
-    <link rel="stylesheet" href="animation.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSSAssignment-ProlificGrowth</title>
 </head>
 
 
+
+<link rel="stylesheet" href="animation.css">
 <h1>
     Prolific Growth
 </h1>
@@ -17,7 +21,7 @@
     <div id="sky"></div>
 
     <div id="ground">
-        <img id="hole" src="./Hole.png">
+        <img id="hole" alt="little hole" src="./Hole.png">
     </div>
 
 
@@ -59,17 +63,16 @@
                 cursorRect.top < holeRect.bottom &&
                 cursorRect.bottom > holeRect.top
                 ) {
-                    // Oval is over the hole, hide it
+                    // Seed is over the hole, hide it
                     seed.style.opacity = 0;
                 } else {
-                    // Oval is not over the hole, show it
+                    // Seed is not over the hole, show it
                     seed.style.opacity = 1;
                 }
             }
         });
     });
     </script>
-
 
 </body>
 </html>
