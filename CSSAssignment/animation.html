@@ -5,17 +5,71 @@
     <link rel="stylesheet" href="animation.css">
 </head>
 
+
+<h1>
+    Prolific Growth
+</h1>
+
+
 <body>
-    <h1>
-        Unexpected Growth
-    </h1>
-    
-    <div class="ground">
-        <div style="float:left; width: 80%">
-        </div>
-        <div style="float:right;">
-        </div>
+
+
+    <div id="sky"></div>
+
+    <div id="ground">
+        <img id="hole" src="./Hole.png">
     </div>
+
+
+    <div id="seed"></div>
+
+    <div id="plant"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const seed = document.getElementById('seed');
+        let isMousePressed = false;
+
+        document.addEventListener('mousedown', () => {
+            isMousePressed = true;
+            seed.style.transition = 'none'; // Disable transition while being dragged
+        });
+
+        document.addEventListener('mouseup', () => {
+            isMousePressed = false;
+            seed.style.transition = 'transform 0.1s ease'; // Re-enable transition after release
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isMousePressed) {
+                const angle = Math.atan2(e.clientY - window.innerHeight / 2, e.clientX - window.innerWidth / 2);
+                const rotation = angle * (180 / Math.PI);
+                seed.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+                seed.style.left = e.pageX + 'px';
+                seed.style.top = e.pageY + 'px';
+
+                // Check for collision with the hole element
+                const hole = document.getElementById('hole');
+                const holeRect = hole.getBoundingClientRect();
+                const cursorRect = seed.getBoundingClientRect();
+
+                if (
+                cursorRect.left < holeRect.right &&
+                cursorRect.right > holeRect.left &&
+                cursorRect.top < holeRect.bottom &&
+                cursorRect.bottom > holeRect.top
+                ) {
+                    // Oval is over the hole, hide it
+                    seed.style.opacity = 0;
+                } else {
+                    // Oval is not over the hole, show it
+                    seed.style.opacity = 1;
+                }
+            }
+        });
+    });
+    </script>
+
 
 </body>
 </html>
