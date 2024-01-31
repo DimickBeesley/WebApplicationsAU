@@ -1,26 +1,65 @@
 body {
-    background-color: rgb(51, 241, 241);
+    
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
 }
 
 h1 {
-    color:rgb(193, 146, 47);
+    position: absolute;
+    left: 50%;
+    top: 2%;
+    transform: translate(-50%,-15%);
+    color:rgb(34, 121, 34);
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 500;
 }
 
-div.sky {
+#sky {
+    flex: 2;
     background-color: rgb(51, 241, 241);
-    height: 50vh;
-
-    top: 0;
 }
 
-div.ground {
+#ground {
+    flex: 1;
     background-color:rgb(245, 208, 128);
-    height: 50vh;
-    
-    bottom: 0;
+}
+
+#seed {
+    width: 40px;
+    height: 20px;
+    background-color: #633b07;
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none; /* Ensures the cursor doesn't interfere with underlying elements */
+}
+
+#hole {
+    position: relative;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%,-15%);
+}
+
+#plant {
+    width: 10px;
+    height: 80px;
+    background-color: #2ecc71;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scaleY(0); /* Initial state, hidden */
+    transform-origin: bottom;
+    animation: growPlant 1s forwards; /* Animation duration and fill mode */
+    z-index: 3;
+}
+
+@keyframes growPlant {
+    to {
+        transform: translate(-50%, -50%) scaleY(1); /* Final state, fully visible */
+    }
 }
