@@ -29,6 +29,10 @@ h1 {
     background-color:rgb(245, 208, 128);
 }
 
+#seed_parent {
+    position: absolute;
+}
+
 #seed {
     width: 40px;
     height: 20px;
@@ -39,9 +43,9 @@ h1 {
 }
 
 #hole {
-    position: relative;
+    position: absolute;
+    bottom: 20%;
     left: 50%;
-    top: 10%;
     transform: translate(-50%,-15%);
 }
 
@@ -50,16 +54,17 @@ h1 {
     height: 80px;
     background-color: #2ecc71;
     position: absolute;
-    top: 50%;
+    bottom: 23%;
     left: 50%;
-    transform: translate(-50%, -50%) scaleY(0); /* Initial state, hidden */
+    transform: translate(-50%, -15%) scaleY(0); /* Initial state, hidden */
     transform-origin: bottom;
-    animation: growPlant 1s forwards; /* Animation duration and fill mode */
+    /*animation: growPlant 1s forwards;  Animation duration and fill mode */
     z-index: 3;
 }
 
+
 @keyframes growPlant {
     to {
-        transform: translate(-50%, -50%) scaleY(1); /* Final state, fully visible */
+        transform: translate(-50%, -15%) scaleY(1); /* Final state, fully visible */
     }
 }

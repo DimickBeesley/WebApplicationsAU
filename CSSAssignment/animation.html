@@ -17,22 +17,31 @@
 
 <body>
 
-
+    
     <div id="sky"></div>
 
     <div id="ground">
+        
         <img id="hole" alt="little hole" src="./Hole.png">
+        
+        <div id="plant"></div>
+        
     </div>
 
+    <div id="seed_parent"> <!--Just so that I can use appendChild() and removeChild() later-->
+        <div id="seed"></div>
+    </div>
 
-    <div id="seed"></div>
-
-    <div id="plant"></div>
+    
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+        const seed_parent = document.getElementById('seed_parent');
         const seed = document.getElementById('seed');
+        const hole = document.getElementById('hole');
+        const plant = document.getElementById('plant');
         let isMousePressed = false;
+        seed_parent.appendChild(seed);
 
         document.addEventListener('mousedown', () => {
             isMousePressed = true;
@@ -52,25 +61,25 @@
                 seed.style.left = e.pageX + 'px';
                 seed.style.top = e.pageY + 'px';
 
-                // Check for collision with the hole element
+                // For collision check with the hole element
                 const hole = document.getElementById('hole');
                 const holeRect = hole.getBoundingClientRect();
                 const cursorRect = seed.getBoundingClientRect();
 
+                // Check
                 if (
                 cursorRect.left < holeRect.right &&
                 cursorRect.right > holeRect.left &&
                 cursorRect.top < holeRect.bottom &&
                 cursorRect.bottom > holeRect.top
                 ) {
-                    // Seed is over the hole, hide it
-                    seed.style.opacity = 0;
-                } else {
-                    // Seed is not over the hole, show it
-                    seed.style.opacity = 1;
+                    // Seed is over hole. Delete it.
+                    seed_parent.removeChild(seed);
+                    plant.style.animation = "growPlant 2s forwards"
                 }
             }
         });
+
     });
     </script>
 
