@@ -46,25 +46,24 @@ h1 {
     position: absolute;
     bottom: 20%;
     left: 50%;
-    transform: translate(-50%,-15%);
+    transform: translate(-50%,-15%) scaleX(1.5) scaleY(1.5);
 }
 
+
 #plant {
-    width: 10px;
-    height: 80px;
-    background-color: #2ecc71;
     position: absolute;
-    bottom: 23%;
+    bottom: 19%;
     left: 50%;
-    transform: translate(-50%, -15%) scaleY(0); /* Initial state, hidden */
+    transform: translate(-50%, -15%) scaleX(0) scaleY(0); /* Initial state, hidden */
     transform-origin: bottom;
     /*animation: growPlant 1s forwards;  Animation duration and fill mode */
     z-index: 3;
+    transition: opacity 0.5s ease;
 }
 
 
 @keyframes growPlant {
     to {
-        transform: translate(-50%, -15%) scaleY(1); /* Final state, fully visible */
+        transform: translate(-50%, -15%) scaleX(1.5) scaleY(1.5); /* Final state, fully visible */
     }
 }
