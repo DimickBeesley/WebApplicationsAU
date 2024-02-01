@@ -39,7 +39,7 @@ h1 {
     background-color: #633b07;
     border-radius: 50%;
     position: absolute;
-    pointer-events: none; /* Ensures the cursor doesn't interfere with underlying elements */
+    pointer-events: none; 
 }
 
 #hole {
@@ -54,9 +54,8 @@ h1 {
     position: absolute;
     bottom: 19%;
     left: 50%;
-    transform: translate(-50%, -15%) scaleX(0) scaleY(0); /* Initial state, hidden */
+    transform: translate(-50%, -15%) scaleX(0) scaleY(0); /* Initial state: hidden */
     transform-origin: bottom;
-    /*animation: growPlant 1s forwards;  Animation duration and fill mode */
     z-index: 3;
     transition: opacity 0.5s ease;
 }
@@ -64,6 +63,6 @@ h1 {
 
 @keyframes growPlant {
     to {
-        transform: translate(-50%, -15%) scaleX(1.5) scaleY(1.5); /* Final state, fully visible */
+        transform: translate(-50%, -15%) scaleX(1.5) scaleY(1.5); /* Final state of grown plant without the flower */
     }
 }
