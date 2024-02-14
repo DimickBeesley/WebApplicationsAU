@@ -1,6 +1,40 @@
-<?xml version="1.0" encoding="UTF-8" *****standalone="NOO????"*****?>
-<!--
-    This document is ....
--->
-<namespace/>
-<souths></souths>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE racing 
+
+[
+	<!ELEMENT racing (teams, cars)>
+	
+	
+	<!ELEMENT team (team_title, description, series)>
+	<!ATTLIST team
+		tid ID #REQUIRED
+		cars IDREFS #REQUIRED
+	>
+	<!ELEMENT teams (team+)>
+	<!ELEMENT team_title (#PCDATA)>
+	<!ELEMENT series (#PCDATA)>
+	<!ELEMENT description (#PCDATA)>
+	
+	
+	<!ELEMENT car (car_title, model, driver)>
+	<!ATTLIST car
+		cid ID #REQUIRED
+		team IDREFS #REQUIRED
+	>
+	<!ELEMENT cars (car+)>
+	<!ELEMENT car_title (#PCDATA)>
+	<!ELEMENT model (#PCDATA)>
+	<!ELEMENT driver (#PCDATA)>
+	
+	
+	<!ENTITY racing_team SYSTEM "teams.xml">
+	<!ENTITY racing_car SYSTEM "cars.xml">
+]>
+
+<racing>
+
+	&racing_team;
+	&racing_car;
+	
+</racing>
