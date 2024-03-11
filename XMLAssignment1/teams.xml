@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<teams>
+	<team tid="team1" cars="car1">
+		<team_title>Assassins</team_title>
+		<description>killers on the track</description>
+		<series></series>
+	</team>
+	<team tid="team2" cars="car2">
+		<team_title>TopGear</team_title>
+		<description>the driver doesn't talk much</description>
+		<series></series>
+	</team>
+	<team tid="team3" cars="car3">
+		<team_title>Foodies</team_title>
+		<description>love their food</description>
+		<series></series>
+	</team>
+</teams>
