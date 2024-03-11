@@ -5,9 +5,101 @@
    Case Problem 4
 
    Map Finds For You schema
-   Author:  
-   Date:     
+   Author: Dimick Beesley
+   Date: 3/11/2024
 
-   Filename:         orders.xsd
-   Supporting Files: orders.xml
+   Filename:          orders.xsd
+   Supporting Files:  orders.xml
 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- our elements -->
+	<xs:element name="item">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="itemPrice"/>
+					<xs:element ref="itemQty"/>
+				</xs:sequence>
+				<xs:attribute ref="itemNumber"/>
+			</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="items">
+		<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="item" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="itemPrice">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:decimal">
+					<xs:attribute ref="saleItem"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="itemQty" type="xs:integer"/>
+	
+	<xs:element name="order">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="orderDate"/>
+				<xs:element ref="items"/>
+			</xs:sequence>
+			<xs:attribute ref="orderID"/>
+			<xs:attribute ref="orderBy"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="orders">
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element ref="order" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="orderDate" type="xs:date"/>
+	
+	<xs:element name="customer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="name"/>
+				<xs:element ref="address"/>
+				<xs:element ref="phone"/>
+				<xs:element ref="email" minOccurs="0"/>
+				<xs:element ref="orders"/>
+			</xs:sequence>
+			<xs:attribute ref="custID"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="customers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="customer" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="email" type="xs:string"/>
+	
+	<xs:element name="phone" type="phoneType"/>
+	
+	<xs:element name="address" type="xs:string"/>
+	
+	<xs:element name="name">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute ref="title"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>
