@@ -102,4 +102,43 @@
 		</xs:complexType>
 	</xs:element>
 	
+	<!-- our attributes -->
+	<xs:attribute name="saleItem" type="saleItemType" />
+	<xs:attribute name="itemNumber" type="xs:string"/>
+	<xs:attribute name="orderID" type="orderID_Type"/>
+	<xs:attribute name="orderBy" type="custID_Type"/>
+	<xs:attribute name="title" type="titleType"/>
+	<xs:attribute name="custID" type="custID_Type"/>
+
+	<!-- our data types -->
+	<xs:simpleType name="saleItemType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="N|Y" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="orderID_Type">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="or\d{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="custID_Type">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="cust\d{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="phoneType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\(\d{3}\) \d{3}-\d{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="titleType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="Mr.|Ms.|Mrs."/>
+		</xs:restriction>
+	</xs:simpleType>
+
 </xs:schema>
